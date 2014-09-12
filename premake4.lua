@@ -27,8 +27,8 @@ LINKS = {}
 if os.is("macosx") then
 
     KIND       = "WindowedApp"
-    LINKS      = { "sfml-graphics.framework", "sfml-window.framework", "sfml-system.framework", "CoreFoundation.framework", "freetype.framework" }
-    -- LINKS      = { "sfml-graphics-d", "sfml-window-d", "sfml-system-d", "CoreFoundation.framework" }
+    -- LINKS      = { "sfml-graphics.framework", "sfml-window.framework", "sfml-system.framework", "CoreFoundation.framework", "freetype.framework" }
+    LINKS      = { "sfml-graphics-d", "sfml-window-d", "sfml-system-d", "CoreFoundation.framework" }
     PLATFORMS  = { "x32" }
     BUILD_OPTS = "-std=c++11 -stdlib=libc++ -g"
     LINK_OPTS  = "-stdlib=libc++"
