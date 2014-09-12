@@ -28,6 +28,7 @@ int main()
     int joystickIndex = -1;
     View view;
     sf::Joystick::update();
+    view.setJoystick(0);
     for (int i = 0; i < sf::Joystick::Count; ++i)
     {
         if (sf::Joystick::isConnected(i))
