@@ -23,6 +23,21 @@ View::View() :
         sf::FloatRect bounds = instructions.getGlobalBounds();
         instructions.setPosition((1024.0f - bounds.width) / 2.0f, 742);
     }
+
+    {
+        float size = 10.0f;
+        float padding = 8.0f;
+        float width = (size + padding) * sf::Joystick::Count;
+        float x = (1024.0f - width) / 2.0f;
+        for (unsigned int i = 0; i < sf::Joystick::Count; ++i)
+        {
+            sf::RectangleShape rect(sf::Vector2f(size, size));
+            rect.setPosition(x + (i * (size + padding)), 720);
+
+            setIndicatorColor(rect, i, false);
+            indicators.push_back(rect);
+        }
+    }
 }
 
 
@@ -44,7 +59,6 @@ void View::setJoystick(unsigned int joystickIndex)
     buttonLabels.clear();
     axes.clear();
     indicatorLabels.clear();
-    indicators.clear();
 
     {
         name = sf::Text(id.name, font, 36);
@@ -167,17 +181,9 @@ void View::setJoystick(unsigned int joystickIndex)
         selectedDisconnectedLabel.setPosition(labelX += labelW, labelY);
         indicatorLabels.push_back(selectedDisconnectedLabel);
 
-        float size = 10.0f;
-        float padding = 8.0f;
-        float width = (size + padding) * sf::Joystick::Count;
-        float x = (1024.0f - width) / 2.0f;
         for (unsigned int i = 0; i < sf::Joystick::Count; ++i)
         {
-            sf::RectangleShape rect(sf::Vector2f(size, size));
-            rect.setPosition(x + (i * (size + padding)), 720);
-
-            setIndicatorColor(rect, i, sf::Joystick::isConnected(i));
-            indicators.push_back(rect);
+            setIndicatorColor(indicators.at(i), i, sf::Joystick::isConnected(i));
         }
     }
 }
