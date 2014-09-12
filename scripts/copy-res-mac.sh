@@ -9,4 +9,4 @@ PROJ_ROOT=..
 rm -rf $PROJ_ROOT/build/Debug/$app_name/Contents/Resources
 # At some point make this more selective so we aren't copying all the source assets
 # as well.
-cp -R $PROJ_ROOT/Resources $PROJ_ROOT/build/Debug/$app_name/Contents/Resources
+ditto $PROJ_ROOT/Resources $CONFIGURATION_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources
