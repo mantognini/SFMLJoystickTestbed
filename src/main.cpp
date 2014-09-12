@@ -76,6 +76,18 @@ int main()
                         view.setJoystick(joystickIndex);
                     }
                 }
+                else if (event.type == sf::Event::JoystickConnected) {
+                    // reset the view
+                    if (joystickIndex == event.joystickConnect.joystickId) {
+                        view.setJoystick(joystickIndex);
+                    }
+                }
+                else if (event.type == sf::Event::JoystickDisconnected) {
+                    // reset the view
+                    if (joystickIndex == event.joystickConnect.joystickId) {
+                        view.setJoystick(joystickIndex);
+                    }
+                }
             }
 
             view.update();
