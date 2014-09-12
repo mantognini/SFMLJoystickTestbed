@@ -191,7 +191,7 @@ void View::setJoystick(unsigned int joystickIndex)
 ///////////////////////////////////////////////////////////
 void View::update()
 {
-    for (unsigned int i = 0; i < sf::Joystick::getButtonCount(joystickIndex); ++i)
+    for (unsigned int i = 0; i < sf::Joystick::getButtonCount(joystickIndex) && i < buttons.size(); ++i)
     {
         if (sf::Joystick::isButtonPressed(joystickIndex, i))
         {
